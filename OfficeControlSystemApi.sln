@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeControlSystemApi", "OfficeControlSystemApi\OfficeControlSystemApi.csproj", "{B387B723-2C87-4B7C-B3FC-DE4945175D29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeControlSystemApiTest", "OfficeControlSystemApiTest\OfficeControlSystemApiTest.csproj", "{BF59D11F-E3F8-4864-BED4-95753FFBB7A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B387B723-2C87-4B7C-B3FC-DE4945175D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B387B723-2C87-4B7C-B3FC-DE4945175D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B387B723-2C87-4B7C-B3FC-DE4945175D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B387B723-2C87-4B7C-B3FC-DE4945175D29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF59D11F-E3F8-4864-BED4-95753FFBB7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF59D11F-E3F8-4864-BED4-95753FFBB7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF59D11F-E3F8-4864-BED4-95753FFBB7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF59D11F-E3F8-4864-BED4-95753FFBB7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68E32AE9-58E8-4BB3-9E02-A9C7DEB71545}
+	EndGlobalSection
+EndGlobal

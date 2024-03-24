@@ -1,0 +1,6 @@
+@OfficeControlSystemApi_HostAddress = http://localhost:5099
+
+GET {{OfficeControlSystemApi_HostAddress}}/officecontrolsystem/
+Accept: application/json
+
+###
