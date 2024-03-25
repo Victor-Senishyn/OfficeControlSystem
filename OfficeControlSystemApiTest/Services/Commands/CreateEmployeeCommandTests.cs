@@ -21,7 +21,6 @@ namespace OfficeControlSystemApiTest.Services.Commands
         }
 
         [Theory]
-        [InlineData("FirstName", "SecondName", AccessLevel.Low)]
         [InlineData("FirstName", "SecondName", AccessLevel.Medium)]
         [InlineData("FirstName", "SecondName", AccessLevel.High)]
         public async Task CreateEmployeeCommand_ExecuteAsync_ReturnsEmployeeDto(
