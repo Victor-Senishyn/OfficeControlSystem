@@ -26,7 +26,8 @@ namespace OfficeControlSystemApi.Controllers
             long visitHistoryId, 
             CancellationToken cancellationToken)
         {
-            return BadRequest("Request canceled due to user action or timeout.");
+            var updatedVisitHistory = await _visitHistoryService.UpdateExitDateTime(visitHistoryId, cancellationToken);
+            return Ok(updatedVisitHistory);
         }
 
         [HttpPost("/visit/{accessCardId}")]
@@ -35,7 +36,8 @@ namespace OfficeControlSystemApi.Controllers
             long accessCardId, 
             CancellationToken cancellationToken)
         {
-            return new OkObjectResult(await _createVisitHistoryCommand.ExecuteAsync(accessCardId, cancellationToken));
+            var createdVisitHistory = await _createVisitHistoryCommand.ExecuteAsync(accessCardId, cancellationToken);
+            return new OkObjectResult(createdVisitHistory);
         }
     }
 }

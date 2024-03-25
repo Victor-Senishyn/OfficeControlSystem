@@ -11,11 +11,11 @@ namespace OfficeControlSystemApi.Services
 {
     public class VisitHistoryService : IVisitHistoryService
     {
-        private readonly VisitHistoryRepository _visitHistoryRepository;
+        private readonly IVisitHistoryRepository _visitHistoryRepository;
 
-        public VisitHistoryService(AppDbContext context)
+        public VisitHistoryService(IVisitHistoryRepository visitHistoryRepository)
         {
-            _visitHistoryRepository = new VisitHistoryRepository(context);
+            _visitHistoryRepository = visitHistoryRepository;
         }
 
         public async Task<VisitHistoryDto> UpdateExitDateTime(

@@ -14,8 +14,7 @@ namespace OfficeControlSystemApi.Services.Commands
 
 
         public CreateEmployeeCommand(
-            IEmployeeRepository employeeRepository
-            )
+            IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
@@ -25,6 +24,9 @@ namespace OfficeControlSystemApi.Services.Commands
             AccessLevel accessLevel, 
             CancellationToken cancellationToken = default)
         {
+            if(employeeDto == null)
+                throw new ArgumentNullException(nameof(employeeDto));
+
             var employee = new Employee()
             {
                 FirstName = employeeDto.FirstName,

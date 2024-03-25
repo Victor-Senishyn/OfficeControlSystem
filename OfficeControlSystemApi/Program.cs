@@ -68,6 +68,8 @@ builder.Services.AddScoped<IVisitHistoryService, VisitHistoryService>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IAccessCardRepository, AccessCardRepository>();
 builder.Services.AddScoped<IVisitHistoryRepository, VisitHistoryRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 builder.Services.AddScoped<ICreateEmployeeCommand, CreateEmployeeCommand>();
 builder.Services.AddScoped<ICreateVisitHistoryCommand, CreateVisitHistoryCommand>();

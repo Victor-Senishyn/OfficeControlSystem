@@ -21,6 +21,7 @@ namespace OfficeControlSystemApiTest.Services.Commands
         }
 
         [Theory]
+        [InlineData("FirstName", "SecondName", AccessLevel.Low)]
         [InlineData("FirstName", "SecondName", AccessLevel.Medium)]
         [InlineData("FirstName", "SecondName", AccessLevel.High)]
         public async Task CreateEmployeeCommand_ExecuteAsync_ReturnsEmployeeDto(
@@ -33,14 +34,28 @@ namespace OfficeControlSystemApiTest.Services.Commands
             var employeeDto = new EmployeeDto { FirstName = firstName, LastName = lastName };
 
             // Act
-            var result = await createEmployeeCommand.ExecuteAsync(employeeDto, accessLevel, CancellationToken.None);
+            var result = await createEmployeeCommand.ExecuteAsync(
+                employeeDto, 
+                accessLevel, 
+                CancellationToken.None);
 
             // Assert
-            ((int)accessLevel).Should().BeGreaterThan(0);
+            ((int)accessLevel).Should().BeGreaterOrEqualTo(0);
             ((int)accessLevel).Should().BeLessThan(4);
             result.Should().NotBeNull();
             result.FirstName.Should().Be(firstName);
             result.LastName.Should().Be(lastName);
+        }
+
+        [Fact]
+        public async Task CreateEmployeeCommand_ExecuteAsync_ThrowsArgumentNullException_WhenEmployeeDtoIsNull()
+        {
+            // Arrange
+            var createEmployeeCommand = new CreateEmployeeCommand(_employeeRepository);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => createEmployeeCommand.ExecuteAsync(null, AccessLevel.Low, CancellationToken.None));
         }
     }
 }

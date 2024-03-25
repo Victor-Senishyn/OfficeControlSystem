@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OfficeControlSystemApi.Data;
+using OfficeControlSystemApi.Data.Interfaces;
 using OfficeControlSystemApi.Models.Enums;
 using OfficeControlSystemApi.Models.Identity;
 using OfficeControlSystemApi.Services.Interaces;
@@ -10,16 +11,16 @@ namespace OfficeControlSystemApi.Services.Commands
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly AppDbContext _dbContext;
+        private readonly IUserRepository _userRepository;
 
         public CreateUserCommand(
             UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager,
-            AppDbContext dbContext)
+            IUserRepository userRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _dbContext = dbContext;
+            _userRepository = userRepository;
         }
 
         public async Task ExecuteAsync(
@@ -45,8 +46,8 @@ namespace OfficeControlSystemApi.Services.Commands
 
             if (!await _userManager.IsInRoleAsync(user, roleName))
                 await _userManager.AddToRoleAsync(user, roleName);
-
-            await _dbContext.SaveChangesAsync();
+            
+            await _userRepository.CommitAsync();
         }
     }
 }
