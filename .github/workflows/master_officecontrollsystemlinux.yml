@@ -20,10 +20,16 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release OfficeControlSystemApi.sln
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o OfficeControlSystemApi/Output OfficeControlSystemApi.sln
+        run: dotnet publish -c Release -o OfficeControlSystemApi/Output
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: ubuntu-latest
@@ -37,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: .net-app
-          path: OfficeControlSystemApi/Output
+          path: ${{env.DOTNET_ROOT}}/myapp
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -46,4 +52,4 @@ jobs:
           app-name: 'OfficeControllSystemLinux'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F694A00249C46EA9B8B8C9C280AA0BC }}
-          package: OfficeControlSystemApi/Output
+          package: .
