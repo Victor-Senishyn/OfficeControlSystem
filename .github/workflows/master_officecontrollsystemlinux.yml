@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Run tests
+        run: dotnet test OfficeControlSystemApiTest/OfficeControlSystemApiTest.csproj
+
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
