@@ -16,9 +16,6 @@ jobs:
       - name: Run tests
         run: dotnet test OfficeControlSystemApiTest/OfficeControlSystemApiTest.csproj
 
-      - name: Run tests
-        run: dotnet test OfficeControlSystemApiTest/OfficeControlSystemApiTest.csproj
-
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
