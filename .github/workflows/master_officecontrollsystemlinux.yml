@@ -51,4 +51,4 @@ jobs:
           app-name: 'OfficeControllSystemLinux'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F694A00249C46EA9B8B8C9C280AA0BC }}
-          package: myapp
+          package: .
