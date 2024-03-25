@@ -39,11 +39,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+      - name: Download artifact for deployment job
+        uses: actions/download-artifact@v3
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -52,4 +51,4 @@ jobs:
           app-name: 'OfficeControllSystemLinux'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F694A00249C46EA9B8B8C9C280AA0BC }}
-          package: .
+          package: myapp
